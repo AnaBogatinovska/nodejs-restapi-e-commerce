@@ -1,6 +1,8 @@
 {
     "env": {
-        "MONGO_ATLAS_PW": "node-shop",
+        "MONGO_USER": "ShoppingListProd",
+        "MONGO_PW": "8gETCVZ5hktFWVmA",
+        "MONGO_DB": "ShoppingListProd",
         "JWT_KEY": "mZlXfDVOqi",
         "SELF_URL": "http://ecommerce-api.anabogatinovska.com"
     }

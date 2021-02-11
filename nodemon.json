@@ -1,6 +1,8 @@
 {
     "env": {
-        "MONGO_ATLAS_PW": "node-shop",
+        "MONGO_USER": "ShoppingListDev",
+        "MONGO_PW": "UZg1yzvte1jSFyVg",
+        "MONGO_DB": "ShoppingList",
         "JWT_KEY": "mZlXfDVOqi",
         "SELF_URL": "http://localhost:3000"
     }

@@ -11,14 +11,13 @@ const userRoutes = require('./api/routes/user/UserListItems')
 const cartItemsRoutes = require('./api/routes/user/CartItems')
 const authRoutes = require('./api/routes/auth/Auth')
 
-
-mongoose.connect(
-    "mongodb+srv://dbAnaB:" +
-      process.env.MONGO_ATLAS_PW +
-      "@node-rest-shop.inld1.mongodb.net/ShoppingList?retryWrites=true&w=majority",
+const connectionString = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@node-rest-shop.inld1.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
+  mongoose.connect(
+    connectionString,
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
 
+  console.log(connectionString)
   app.use(morgan("dev"));
   app.use('/uploads', express.static("uploads"))
   app.use(bodyParser.urlencoded({ extended: false }));
