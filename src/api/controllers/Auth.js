@@ -20,7 +20,7 @@ exports.register = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email }).exec();
     console.log(user)
     if (user) {
-      res.status(409).json({
+      res.status(400).json({
         message: "This user is already registered.",
       });
     } else {
