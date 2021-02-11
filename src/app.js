@@ -18,12 +18,11 @@ const connectionString = `mongodb+srv://${process.env.MONGO_USER}:${process.env.
   );
 
   console.log(connectionString)
+  app.use(cors());
   app.use(morgan("dev"));
   app.use('/uploads', express.static("uploads"))
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.use(cors());
-
 
   //routes middlewares
   app.use('/api/admin/item', adminRoutes)

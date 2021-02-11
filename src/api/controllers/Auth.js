@@ -57,8 +57,8 @@ exports.login = async (req, res, next) => {
       { username: req.body.user }
   ]}).exec();
     if (!user) {
-      return res.status(401).json({
-        message: "401 Unauthorized (user does not exists)!",
+      return res.status(400).json({
+        message: "Invalid username or password!",
       });
     }
 
