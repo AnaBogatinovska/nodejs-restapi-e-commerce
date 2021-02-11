@@ -52,23 +52,25 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   try {
-    const user = await User.findOne({$or: [
+    const user = await User.findOne({  $or: [
       { email: req.body.user },
       { username: req.body.user }
   ]}).exec();
     if (!user) {
       return res.status(400).json({
-        message: "Invalid username or password!",
+        message: "Invalid username or password",
       });
     }
 
+   
     bcrypt.compare(req.body.password, user.password, (err, result) => {
       if (err) {
-        return res.status(401).json({
-          message: "401 Unauthorized (request body props are not valid)!",
+        return res.status(400).json({
+          message: "Invalid username or password",
+          error: err
         });
       }
-
+      console.log('RESULT',result)
       if (result) {
         const token = jwt.sign(
           { email: user.email, 
@@ -79,12 +81,13 @@ exports.login = async (req, res, next) => {
           process.env.JWT_KEY,
           { expiresIn: "1h" }
         );
-
+        
         return res.status(200).json(token);
       }
 
-      res.status(401).json({
-        message: "401 Unauthorized (email or password invalid)!",
+      res.status(400).json({
+        message: "Invalid username or password",
+        error: err
       });
     });
   } catch (err) {
