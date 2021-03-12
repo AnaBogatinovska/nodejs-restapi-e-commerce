@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 //If there is operation error
 app.use((err, req, res, next) => {
-  console.log(err)
+  console.log("Operation error catched:", err)
   res.status(err.status || 500);
   res.json({
     message: err.message,
