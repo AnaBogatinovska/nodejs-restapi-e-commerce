@@ -65,7 +65,8 @@ exports.login = async (req, res, next) => {
     bcrypt.compare(req.body.password, user.password, (err, result) => {
       if (err) {
         return res.status(401).json({
-          message: "401 Unauthorized (request body props are not valid)!",
+          message: "Invalid username or password",
+          error: err
         });
       }
 
