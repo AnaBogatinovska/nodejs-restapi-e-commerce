@@ -31,7 +31,6 @@ exports.get_list_item = async (req, res, next) => {
 };
 
 exports.post_list_item = async (req, res, next) => {
-  console.log(req)
   const item = new Item({
     _id: new mongoose.Types.ObjectId(),
     UserId: req.userData.id,
