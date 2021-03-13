@@ -16,8 +16,7 @@ const connectionString = `mongodb+srv://${process.env.MONGO_USER}:${process.env.
     connectionString,
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
-
-  console.log(connectionString)
+  
   app.use(cors());
   app.use(morgan("dev"));
   app.use('/uploads', express.static("uploads"))
